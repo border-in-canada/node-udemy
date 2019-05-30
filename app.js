@@ -5,9 +5,16 @@ const shopRoutes = require('./routes/shop');
 const path = require('path');
 
 const bodyParser = require('body-parser');
+const expressHbs = require('express-handlebars');
 
 const app = express();
 
+app.engine('hbs', expressHbs({
+    layoutsDir: 'views/layouts/', 
+    default: 'main-layout', 
+    extname: 'hbs'
+}));
+app.set('view engine', 'hbs');
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
